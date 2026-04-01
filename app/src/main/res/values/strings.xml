@@ -31,4 +31,92 @@
     <string name="who_obese2_range">35.0 – 39.9</string>
     <string name="who_obese3">Семіздік III дәреже</string>
     <string name="who_obese3_range">≥ 40.0</string>
+
+    <!-- Auth -->
+    <string name="login_title">Кіру</string>
+    <string name="register_title">Тіркелу</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Құпия сөз</string>
+    <string name="hint_confirm_password">Құпия сөзді растау</string>
+    <string name="hint_name">Атыңыз</string>
+    <string name="btn_login">Кіру</string>
+    <string name="btn_register">Тіркелу</string>
+    <string name="link_to_register">Тіркелмедіңіз бе? Тіркелу</string>
+    <string name="link_to_login">Аккаунтыңыз бар ма? Кіру</string>
+    <string name="logout">Шығу</string>
+
+    <!-- Errors -->
+    <string name="error_field_empty">Өріс бос қалмауы керек</string>
+    <string name="error_email_invalid">Email дұрыс емес</string>
+    <string name="error_password_short">Құпия сөз кемінде 6 символ болуы керек</string>
+    <string name="error_password_mismatch">Құпия сөздер сәйкес келмейді</string>
+    <string name="error_auth_failed">Қате email немесе құпия сөз</string>
+    <string name="error_register_failed">Тіркелу сәтсіз болды</string>
+    <string name="error_unknown">Белгісіз қате</string>
+
+    <!-- Navigation -->
+    <string name="nav_bmi">BMI Есептеу</string>
+    <string name="nav_diet">Диета</string>
+    <string name="nav_tracker">Трекер</string>
+
+    <!-- BMI Fragment -->
+    <string name="bmi_title">ДМИ Калькулятор</string>
+    <string name="gender_select">ЖЫН ТАҢДАУ</string>
+    <string name="gender_male">Ер</string>
+    <string name="gender_female">Әйел</string>
+    <string name="label_weight">Салмақ</string>
+    <string name="label_height">Бой</string>
+    <string name="label_age">Жас</string>
+    <string name="btn_calculate">ДМИ Есептеу →</string>
+    <string name="unit_kg">КГ</string>
+    <string name="unit_lb">ФН</string>
+    <string name="unit_cm">СМ</string>
+    <string name="unit_ft">ФТ</string>
+    <string name="your_bmi">Сіздің ДМИ</string>
+    <string name="bmi_category_label">Санат</string>
+
+    <!-- Workout dialog -->
+    <string name="workout_dialog_title">Жаттығулар кеңесі</string>
+    <string name="workout_dialog_message">Сізге жаттығулар бойынша кеңес керек пе?</string>
+    <string name="dialog_yes">Иә</string>
+    <string name="dialog_no">Жоқ</string>
+
+    <!-- Workout Activity -->
+    <string name="workout_title">Жаттығу жоспары</string>
+    <string name="workout_plan_underweight">Салмақ қосу жоспары</string>
+    <string name="workout_plan_normal">Форманы сақтау жоспары</string>
+    <string name="workout_plan_overweight">Арықтау жоспары</string>
+    <string name="workout_tip_label">Кеңес</string>
+
+    <!-- Days -->
+    <string name="day_monday">Дүйсенбі</string>
+    <string name="day_tuesday">Сейсенбі</string>
+    <string name="day_wednesday">Сәрсенбі</string>
+    <string name="day_thursday">Бейсенбі</string>
+    <string name="day_friday">Жұма</string>
+    <string name="day_saturday">Сенбі</string>
+    <string name="day_sunday">Жексенбі</string>
+
+    <!-- Diet -->
+    <string name="diet_title">Диета</string>
+    <string name="diet_tab_underweight">Арық адамдарға</string>
+    <string name="diet_tab_normal">Қалыпты адамдарға</string>
+    <string name="diet_tab_lose_weight">Арықтау үшін</string>
+    <string name="meal_breakfast">Таңғы ас</string>
+    <string name="meal_lunch">Түскі ас</string>
+    <string name="meal_dinner">Кешкі ас</string>
+    <string name="meal_snack">Тәттілік</string>
+    <string name="meal_daily_total">Күніне барлығы</string>
+    <string name="recipe_show">Рецептті көру</string>
+    <string name="recipe_hide">Жасыру</string>
+
+    <!-- Tracker -->
+    <string name="tracker_title">BMI Тарихы</string>
+    <string name="no_data">Деректер жоқ</string>
+    <string name="last_bmi">Соңғы BMI</string>
+    <string name="trend_up">↑ өсті</string>
+    <string name="trend_down">↓ төмендеді</string>
+    <string name="loading">Жүктелуде…</string>
+    <string name="bmi_history_title">BMI тарихы</string>
+    <string name="chart_title">BMI Өзгерісі</string>
 </resources>

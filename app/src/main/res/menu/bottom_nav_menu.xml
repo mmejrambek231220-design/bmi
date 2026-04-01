@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_bmi"
+        android:title="@string/nav_bmi"
+        android:icon="@drawable/ic_calculate"/>
+
+    <item
+        android:id="@+id/nav_diet"
+        android:title="@string/nav_diet"
+        android:icon="@drawable/ic_restaurant"/>
+
+    <item
+        android:id="@+id/nav_tracker"
+        android:title="@string/nav_tracker"
+        android:icon="@drawable/ic_chart"/>
+
+</menu>

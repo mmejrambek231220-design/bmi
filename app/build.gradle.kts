@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 // Automatically remove the invalidly named resource file that causes build failures
@@ -50,4 +51,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation("com.google.firebase:firebase-database:20.3.1")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.google.android.material:material:1.11.0")
 }
