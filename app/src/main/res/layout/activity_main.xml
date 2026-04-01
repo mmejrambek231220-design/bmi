@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ДМИ Калькулятор"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"/>
+        </LinearLayout>
+
+        <!-- Gender Selection -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ЖЫН ТАҢДАУ"
+            android:textSize="11sp"
+            android:letterSpacing="0.1"
+            android:textColor="@color/blue_primary"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginHorizontal="32dp">
+
+            <!-- Male -->
+            <LinearLayout
+                android:id="@+id/layout_male"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/img_male"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/ic_person"
+                    android:background="@drawable/bg_gender_selected"
+                    android:padding="16dp"
+                    android:tint="@color/blue_primary"/>
+
+                <TextView
+                    android:id="@+id/tv_male_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ер"
+                    android:textSize="14sp"
+                    android:textColor="@color/blue_primary"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Female -->
+            <LinearLayout
+                android:id="@+id/layout_female"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/img_female"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/ic_person"
+                    android:background="@drawable/bg_gender_default"
+                    android:padding="16dp"
+                    android:tint="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/tv_female_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Әйел"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Weight & Height row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp">
+
+            <!-- Weight card -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_info_card"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_person"
+                        android:tint="@color/blue_primary"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_info_card"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="2dp">
+
+                        <TextView
+                            android:id="@+id/tv_unit_kg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="КГ"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/blue_primary"
+                            android:paddingHorizontal="4dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_unit_lb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ФН"
+                            android:textSize="11sp"
+                            android:textColor="@color/text_secondary"
+                            android:paddingHorizontal="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_weight_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="70"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Салмақ"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp">
+
+                    <Button
+                        android:id="@+id/btn_weight_minus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:text="−"
+                        android:textSize="20sp"
+                        android:padding="0dp"
+                        android:backgroundTint="@color/blue_light"
+                        android:textColor="@color/blue_primary"/>
+
+                    <Button
+                        android:id="@+id/btn_weight_plus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:text="+"
+                        android:textSize="20sp"
+                        android:padding="0dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/blue_primary"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Height card -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_info_card"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_person"
+                        android:tint="@color/blue_primary"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_info_card"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="2dp">
+
+                        <TextView
+                            android:id="@+id/tv_unit_cm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="СМ"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/blue_primary"
+                            android:paddingHorizontal="4dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_unit_ft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ФТ"
+                            android:textSize="11sp"
+                            android:textColor="@color/text_secondary"
+                            android:paddingHorizontal="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_height_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="170"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Бой"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp">
+
+                    <Button
+                        android:id="@+id/btn_height_minus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:text="−"
+                        android:textSize="20sp"
+                        android:padding="0dp"
+                        android:backgroundTint="@color/blue_light"
+                        android:textColor="@color/blue_primary"/>
+
+                    <Button
+                        android:id="@+id/btn_height_plus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:text="+"
+                        android:textSize="20sp"
+                        android:padding="0dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/blue_primary"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Age section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Жас"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginHorizontal="16dp">
+
+            <Button
+                android:id="@+id/btn_age_minus"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text="−"
+                android:textSize="22sp"
+                android:padding="0dp"
+                android:backgroundTint="@color/blue_light"
+                android:textColor="@color/blue_primary"/>
+
+            <TextView
+                android:id="@+id/tv_age_value"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:textSize="44sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_primary"
+                android:gravity="center"
+                android:layout_marginHorizontal="16dp"/>
+
+            <Button
+                android:id="@+id/btn_age_plus"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text="+"
+                android:textSize="22sp"
+                android:padding="0dp"
+                android:backgroundTint="@color/blue_primary"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <!-- Calculate button -->
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="28dp"
+            android:text="ДМИ Есептеу →"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue_primary"
+            android:stateListAnimator="@null"/>
+
+    </LinearLayout>
+</ScrollView>

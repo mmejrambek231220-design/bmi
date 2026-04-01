@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ДМИ Калькулятор</string>
+
+    <!-- Result screen -->
+    <string name="result_title">Нәтиже</string>
+    <string name="bmi_label">ДМИ</string>
+
+    <!-- Category chips -->
+    <string name="cat_severe">&lt;16\nАса арық</string>
+    <string name="cat_under">16–18.4\nАрық</string>
+    <string name="cat_normal">18.5–25\nҚалыпты</string>
+    <string name="cat_over">25–40\nАртық</string>
+    <string name="cat_obese">&gt;40\nСеміздік</string>
+
+    <!-- WHO classification -->
+    <string name="who_classification">ДДҰ ЖІКТЕМЕСІ</string>
+    <string name="who_severe">Айқын арықтық</string>
+    <string name="who_severe_range">&lt; 16.0</string>
+    <string name="who_moderate">Орташа арықтық</string>
+    <string name="who_moderate_range">16.0 – 16.9</string>
+    <string name="who_mild">Жеңіл арықтық</string>
+    <string name="who_mild_range">17.0 – 18.4</string>
+    <string name="who_normal">Қалыпты</string>
+    <string name="who_normal_range">18.5 – 24.9</string>
+    <string name="who_overweight">Артық салмақ</string>
+    <string name="who_overweight_range">25.0 – 29.9</string>
+    <string name="who_obese1">Семіздік I дәреже</string>
+    <string name="who_obese1_range">30.0 – 34.9</string>
+    <string name="who_obese2">Семіздік II дәреже</string>
+    <string name="who_obese2_range">35.0 – 39.9</string>
+    <string name="who_obese3">Семіздік III дәреже</string>
+    <string name="who_obese3_range">≥ 40.0</string>
+</resources>

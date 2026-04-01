@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- Toolbar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_revert"
+                android:contentDescription="Артқа" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/result_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_delete"
+                android:contentDescription="Жою" />
+        </RelativeLayout>
+
+        <!-- Info card: gender / weight / height / age -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_info_card"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_person"
+                android:tint="@color/blue_primary"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ер"
+                android:textSize="13sp"
+                android:textColor="@color/text_primary"
+                android:gravity="center"/>
+
+            <View android:layout_width="1dp" android:layout_height="16dp"
+                android:background="@color/divider"/>
+
+            <TextView
+                android:id="@+id/tv_weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="70 кг"
+                android:textSize="13sp"
+                android:textColor="@color/text_primary"
+                android:gravity="center"/>
+
+            <View android:layout_width="1dp" android:layout_height="16dp"
+                android:background="@color/divider"/>
+
+            <TextView
+                android:id="@+id/tv_height"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="185 см"
+                android:textSize="13sp"
+                android:textColor="@color/text_primary"
+                android:gravity="center"/>
+
+            <View android:layout_width="1dp" android:layout_height="16dp"
+                android:background="@color/divider"/>
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="27"
+                android:textSize="13sp"
+                android:textColor="@color/text_primary"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Gauge -->
+        <com.example.bmi.GaugeView
+            android:id="@+id/gauge_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+
+        <!-- BMI label + value -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bmi_label"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tv_bmi_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="20.5"
+            android:textSize="52sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:layout_marginTop="2dp"/>
+
+        <!-- Category chips -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_cat1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                android:background="@drawable/bg_category_default"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:text="@string/cat_severe"/>
+
+            <TextView
+                android:id="@+id/tv_cat2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                android:background="@drawable/bg_category_default"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:text="@string/cat_under"/>
+
+            <TextView
+                android:id="@+id/tv_cat3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                android:background="@drawable/bg_category_default"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:text="@string/cat_normal"/>
+
+            <TextView
+                android:id="@+id/tv_cat4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                android:background="@drawable/bg_category_default"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:text="@string/cat_over"/>
+
+            <TextView
+                android:id="@+id/tv_cat5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                android:background="@drawable/bg_category_default"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:text="@string/cat_obese"/>
+        </LinearLayout>
+
+        <!-- WHO Classification section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/who_classification"
+            android:textSize="11sp"
+            android:letterSpacing="0.1"
+            android:textColor="@color/text_hint"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- WHO rows as simple views -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_info_card"
+            android:padding="0dp">
+
+            <!-- Row: Severe Thinness -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_blue_dark"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_severe" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_severe_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <!-- Row: Moderate Thinness -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_blue"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_moderate" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_moderate_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <!-- Row: Mild Thinness -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_blue_light"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_mild" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_mild_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <!-- Row: Normal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_green"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_normal" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_normal_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <!-- Row: Overweight -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_yellow"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_overweight" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_overweight_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <!-- Row: Obese I -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_orange"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_obese1" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_obese1_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <!-- Row: Obese II -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_red"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_obese2" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_obese2_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <!-- Row: Obese III -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical">
+                <View android:layout_width="10dp" android:layout_height="10dp"
+                    android:background="@drawable/dot_dark_red"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/who_obese3" android:textSize="14sp"
+                    android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/who_obese3_range" android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
