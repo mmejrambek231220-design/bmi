@@ -40,6 +40,10 @@
             android:screenOrientation="portrait"
             android:exported="false" />
 
+        <activity
+            android:name=".MealDetailActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

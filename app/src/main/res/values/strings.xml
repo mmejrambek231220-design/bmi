@@ -99,9 +99,11 @@
 
     <!-- Diet -->
     <string name="diet_title">Диета</string>
-    <string name="diet_tab_underweight">Арық адамдарға</string>
-    <string name="diet_tab_normal">Қалыпты адамдарға</string>
-    <string name="diet_tab_lose_weight">Арықтау үшін</string>
+    <string name="diet_tab_diet_food">Диеталық тағамдар</string>
+    <string name="diet_tab_salads">Салаттар</string>
+    <string name="diet_tab_weight_gain">Салмақ жинау</string>
+    <string name="diet_tab_lose_weight">Арықтау</string>
+    <string name="diet_tab_high_protein">Жоғары ақуыз</string>
     <string name="meal_breakfast">Таңғы ас</string>
     <string name="meal_lunch">Түскі ас</string>
     <string name="meal_dinner">Кешкі ас</string>
@@ -109,6 +111,15 @@
     <string name="meal_daily_total">Күніне барлығы</string>
     <string name="recipe_show">Рецептті көру</string>
     <string name="recipe_hide">Жасыру</string>
+    <string name="recipe_open_detail">Толық сипаттаманы ашу</string>
+    <string name="meal_detail_screen_title">Тағам сипаттамасы</string>
+    <string name="meal_detail_ingredients">Құрамы</string>
+    <string name="meal_detail_recipe">Дайындау тәсілі</string>
+    <string name="diet_section_new_foods">Жаңа тағамдар</string>
+    <string name="diet_home_title">Discover Tasty\nHealthy Recipes</string>
+    <string name="diet_search_hint">Тағам іздеу</string>
+    <string name="diet_hot_title">What’s Hot</string>
+    <string name="meal_serving">Serving</string>
 
     <!-- Tracker -->
     <string name="tracker_title">BMI Тарихы</string>

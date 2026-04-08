@@ -36,6 +36,18 @@
                 android:textColor="@color/text_primary"/>
 
             <TextView
+                android:id="@+id/tv_meal_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@color/blue_light"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/blue_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/tv_meal_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,13 +63,14 @@
                 android:textSize="13sp"
                 android:textColor="@color/text_secondary"
                 android:layout_marginTop="8dp"
-                android:visibility="gone"/>
+                android:maxLines="2"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/tv_toggle_recipe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/recipe_show"
+                android:text="@string/recipe_open_detail"
                 android:textSize="13sp"
                 android:textColor="@color/blue_primary"
                 android:layout_marginTop="8dp"

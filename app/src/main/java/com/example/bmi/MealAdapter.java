@@ -1,5 +1,6 @@
 package com.example.bmi;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,9 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     public void onBindViewHolder(@NonNull MealViewHolder holder, int position) {
         MealItem item = items.get(position);
         holder.tvMealName.setText(item.getName());
+        holder.tvMealType.setText(item.getMealType());
         holder.tvCalories.setText(item.getCalories());
-        holder.tvRecipe.setText(item.getRecipe());
+        holder.tvRecipe.setText(item.getShortRecipe());
 
         Glide.with(holder.itemView.getContext())
                 .load(item.getImageUrl())
@@ -39,15 +41,24 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
                 .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(holder.ivMeal);
 
-        holder.tvToggleRecipe.setOnClickListener(v -> {
-            if (holder.tvRecipe.getVisibility() == View.VISIBLE) {
-                holder.tvRecipe.setVisibility(View.GONE);
-                holder.tvToggleRecipe.setText(R.string.recipe_show);
-            } else {
-                holder.tvRecipe.setVisibility(View.VISIBLE);
-                holder.tvToggleRecipe.setText(R.string.recipe_hide);
-            }
-        });
+        holder.tvToggleRecipe.setOnClickListener(v -> openDetail(holder, item));
+        holder.itemView.setOnClickListener(v -> openDetail(holder, item));
+    }
+
+    private void openDetail(MealViewHolder holder, MealItem item) {
+        Intent intent = new Intent(holder.itemView.getContext(), MealDetailActivity.class);
+        intent.putExtra(MealDetailActivity.EXTRA_NAME, item.getName());
+        intent.putExtra(MealDetailActivity.EXTRA_CALORIES, item.getCalories());
+        intent.putExtra(MealDetailActivity.EXTRA_IMAGE_URL, item.getImageUrl());
+        intent.putExtra(MealDetailActivity.EXTRA_MEAL_TYPE, item.getMealType());
+        intent.putExtra(MealDetailActivity.EXTRA_DESCRIPTION, item.getDescription());
+        intent.putExtra(MealDetailActivity.EXTRA_INGREDIENTS, item.getIngredients());
+        intent.putExtra(MealDetailActivity.EXTRA_STEPS, item.getSteps());
+        intent.putExtra(MealDetailActivity.EXTRA_PROTEIN, item.getProtein());
+        intent.putExtra(MealDetailActivity.EXTRA_CARBS, item.getCarbs());
+        intent.putExtra(MealDetailActivity.EXTRA_FAT, item.getFat());
+        intent.putExtra(MealDetailActivity.EXTRA_DURATION, item.getDuration());
+        holder.itemView.getContext().startActivity(intent);
     }
 
     @Override
@@ -57,12 +68,13 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
 
     static class MealViewHolder extends RecyclerView.ViewHolder {
         ImageView ivMeal;
-        TextView tvMealName, tvCalories, tvRecipe, tvToggleRecipe;
+        TextView tvMealName, tvMealType, tvCalories, tvRecipe, tvToggleRecipe;
 
         MealViewHolder(@NonNull View itemView) {
             super(itemView);
             ivMeal = itemView.findViewById(R.id.iv_meal);
             tvMealName = itemView.findViewById(R.id.tv_meal_name);
+            tvMealType = itemView.findViewById(R.id.tv_meal_type);
             tvCalories = itemView.findViewById(R.id.tv_meal_calories);
             tvRecipe = itemView.findViewById(R.id.tv_meal_recipe);
             tvToggleRecipe = itemView.findViewById(R.id.tv_toggle_recipe);
