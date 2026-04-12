@@ -1,5 +1,6 @@
 package com.example.bmi;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,14 +43,23 @@ public class TrackerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tracker, container, false);
 
         progressBar = view.findViewById(R.id.progress_bar);
-        lineChart = view.findViewById(R.id.line_chart);
-        tvSummary = view.findViewById(R.id.tv_summary);
-        tvNoData = view.findViewById(R.id.tv_no_data);
+        lineChart   = view.findViewById(R.id.line_chart);
+        tvSummary   = view.findViewById(R.id.tv_summary);
+        tvNoData    = view.findViewById(R.id.tv_no_data);
         recyclerView = view.findViewById(R.id.rv_history);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new BmiHistoryAdapter(historyList);
         recyclerView.setAdapter(adapter);
+
+        MaterialButton btnWorkout = view.findViewById(R.id.btn_view_workout);
+        btnWorkout.setOnClickListener(v -> {
+            String category = historyList.isEmpty() ? "" :
+                historyList.get(historyList.size() - 1).getCategory();
+            Intent intent = new Intent(getActivity(), WorkoutActivity.class);
+            intent.putExtra("bmi_category", category);
+            startActivity(intent);
+        });
 
         loadHistory();
         return view;
@@ -79,11 +90,8 @@ public class TrackerFragment extends Fragment {
                     Long timestamp = child.child("timestamp").getValue(Long.class);
                     if (bmiVal != null && category != null && date != null) {
                         historyList.add(new BmiHistoryItem(
-                                date,
-                                bmiVal.floatValue(),
-                                category,
-                                timestamp != null ? timestamp : 0L
-                        ));
+                                date, bmiVal.floatValue(), category,
+                                timestamp != null ? timestamp : 0L));
                     }
                 }
                 Collections.sort(historyList, (a, b) -> a.getDate().compareTo(b.getDate()));
@@ -125,25 +133,30 @@ public class TrackerFragment extends Fragment {
         }
 
         LineDataSet dataSet = new LineDataSet(entries, "BMI");
-        dataSet.setColor(Color.parseColor("#1DB954"));
-        dataSet.setCircleColor(Color.parseColor("#1DB954"));
-        dataSet.setLineWidth(2f);
+        dataSet.setColor(Color.parseColor("#006a2b"));
+        dataSet.setCircleColor(Color.parseColor("#006a2b"));
+        dataSet.setLineWidth(2.5f);
         dataSet.setCircleRadius(5f);
         dataSet.setValueTextSize(10f);
         dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         dataSet.setDrawFilled(true);
-        dataSet.setFillColor(Color.parseColor("#1DB954"));
-        dataSet.setFillAlpha(30);
+        dataSet.setFillColor(Color.parseColor("#72fe8f"));
+        dataSet.setFillAlpha(40);
 
         LineData lineData = new LineData(dataSet);
         lineChart.setData(lineData);
 
+        lineChart.setBackgroundColor(Color.parseColor("#FFFFFF"));
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
+        xAxis.setTextColor(Color.parseColor("#595c5b"));
+        xAxis.setDrawGridLines(false);
 
+        lineChart.getAxisLeft().setTextColor(Color.parseColor("#595c5b"));
+        lineChart.getAxisLeft().setGridColor(Color.parseColor("#e7e8e8"));
         lineChart.getAxisRight().setEnabled(false);
         lineChart.getDescription().setEnabled(false);
         lineChart.getLegend().setEnabled(false);
@@ -157,16 +170,12 @@ public class TrackerFragment extends Fragment {
     private void setupSummary() {
         if (historyList.isEmpty()) return;
         BmiHistoryItem last = historyList.get(historyList.size() - 1);
-        String summary = getString(R.string.last_bmi) + ": " + String.format("%.1f", last.getBmi());
-
+        String text = "Соңғы BMI: " + String.format("%.1f", last.getBmi()) + "  •  " + last.getCategory();
         if (historyList.size() >= 2) {
             BmiHistoryItem prev = historyList.get(historyList.size() - 2);
-            if (last.getBmi() > prev.getBmi()) {
-                summary += "  " + getString(R.string.trend_up);
-            } else if (last.getBmi() < prev.getBmi()) {
-                summary += "  " + getString(R.string.trend_down);
-            }
+            if (last.getBmi() > prev.getBmi()) text += "  ↑";
+            else if (last.getBmi() < prev.getBmi()) text += "  ↓";
         }
-        tvSummary.setText(summary);
+        tvSummary.setText(text);
     }
 }

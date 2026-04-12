@@ -1,55 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_screen"
+    android:background="@color/vitality_background"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="24dp"
         android:paddingBottom="32dp">
 
         <!-- Header -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/bmi_title"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"/>
-        </LinearLayout>
-
-        <!-- Gender Selection -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/gender_select"
-            android:textSize="11sp"
-            android:letterSpacing="0.1"
-            android:textColor="@color/blue_primary"
-            android:gravity="center"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"/>
+            android:text="BMI Калькуляторы"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/vitality_on_surface"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Дене салмағының индексін есептеңіз"
+            android:textSize="14sp"
+            android:textColor="@color/vitality_secondary"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Gender Selection -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginHorizontal="32dp">
+            android:layout_marginBottom="16dp">
 
             <!-- Male -->
             <LinearLayout
@@ -57,27 +44,28 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="16dp">
+                android:padding="24dp"
+                android:background="@drawable/bg_gender_selected">
 
                 <ImageView
                     android:id="@+id/img_male"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_person"
-                    android:background="@drawable/bg_gender_selected"
-                    android:padding="16dp"
-                    android:tint="@color/blue_primary"/>
+                    app:tint="@color/vitality_primary"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"/>
 
                 <TextView
                     android:id="@+id/tv_male_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gender_male"
+                    android:text="Ер"
                     android:textSize="14sp"
-                    android:textColor="@color/blue_primary"
                     android:textStyle="bold"
+                    android:textColor="@color/vitality_primary"
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
 
@@ -87,281 +75,252 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="8dp"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="16dp">
+                android:padding="24dp"
+                android:background="@drawable/bg_gender_default">
 
                 <ImageView
                     android:id="@+id/img_female"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_person"
-                    android:background="@drawable/bg_gender_default"
-                    android:padding="16dp"
-                    android:tint="@color/text_secondary"/>
+                    app:tint="@color/vitality_on_surface_variant"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"/>
 
                 <TextView
                     android:id="@+id/tv_female_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gender_female"
+                    android:text="Әйел"
                     android:textSize="14sp"
-                    android:textColor="@color/text_secondary"
+                    android:textStyle="bold"
+                    android:textColor="@color/vitality_on_surface_variant"
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Weight & Height row -->
+        <!-- Height Card (Full width) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:background="@drawable/bg_info_card"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="БОЙЫ (СМ)"
+                android:textSize="10sp"
+                android:letterSpacing="0.15"
+                android:textColor="@color/vitality_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_height_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="180"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:textColor="@color/vitality_on_surface"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/btn_height_minus"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_revert"
+                    android:background="@drawable/bg_category_default"
+                    android:scaleType="center"
+                    android:contentDescription="−"
+                    app:tint="@color/vitality_primary"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
+                <View
+                    android:layout_width="32dp"
+                    android:layout_height="0dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_height_plus"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_input_add"
+                    android:background="@drawable/bg_category_default"
+                    android:scaleType="center"
+                    android:contentDescription="+"
+                    app:tint="@color/vitality_primary"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Weight + Age Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp">
+            android:layout_marginBottom="24dp">
 
-            <!-- Weight card -->
+            <!-- Weight Card -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:orientation="vertical"
-                android:background="@drawable/bg_info_card"
-                android:padding="16dp">
+                android:gravity="center"
+                android:padding="24dp"
+                android:background="@drawable/bg_info_card">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_person"
-                        android:tint="@color/blue_primary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/unit_kg"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue_primary"
-                        android:layout_marginStart="8dp"/>
-                </LinearLayout>
+                    android:text="САЛМАҒЫ (КГ)"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.15"
+                    android:textColor="@color/vitality_secondary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
 
                 <TextView
                     android:id="@+id/tv_weight_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="70"
-                    android:textSize="40sp"
+                    android:text="74"
+                    android:textSize="36sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginTop="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_weight"
-                    android:textSize="13sp"
-                    android:textColor="@color/text_secondary"/>
+                    android:textColor="@color/vitality_on_surface"
+                    android:layout_marginBottom="16dp"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp">
+                    android:gravity="center">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/btn_weight_minus"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:text="−"
-                        android:textSize="20sp"
-                        android:padding="0dp"
-                        android:backgroundTint="@color/blue_light"
-                        android:textColor="@color/blue_primary"/>
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_revert"
+                        android:background="@drawable/bg_category_default"
+                        android:scaleType="center"
+                        android:contentDescription="−"
+                        app:tint="@color/vitality_primary"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"/>
 
-                    <Button
+                    <View
+                        android:layout_width="16dp"
+                        android:layout_height="0dp"/>
+
+                    <ImageButton
                         android:id="@+id/btn_weight_plus"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:text="+"
-                        android:textSize="20sp"
-                        android:padding="0dp"
-                        android:layout_marginStart="8dp"
-                        android:backgroundTint="@color/blue_primary"
-                        android:textColor="@color/white"/>
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_input_add"
+                        android:background="@drawable/bg_category_default"
+                        android:scaleType="center"
+                        android:contentDescription="+"
+                        app:tint="@color/vitality_primary"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"/>
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Height card -->
+            <!-- Age Card -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:orientation="vertical"
-                android:background="@drawable/bg_info_card"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_person"
-                        android:tint="@color/blue_primary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/unit_cm"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue_primary"
-                        android:layout_marginStart="8dp"/>
-                </LinearLayout>
+                android:gravity="center"
+                android:padding="24dp"
+                android:background="@drawable/bg_info_card">
 
                 <TextView
-                    android:id="@+id/tv_height_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="170"
-                    android:textSize="40sp"
+                    android:text="ЖАСЫ"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.15"
+                    android:textColor="@color/vitality_secondary"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginBottom="8dp"/>
 
                 <TextView
+                    android:id="@+id/tv_age_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_height"
-                    android:textSize="13sp"
-                    android:textColor="@color/text_secondary"/>
+                    android:text="24"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/vitality_on_surface"
+                    android:layout_marginBottom="16dp"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp">
+                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btn_height_minus"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:text="−"
-                        android:textSize="20sp"
-                        android:padding="0dp"
-                        android:backgroundTint="@color/blue_light"
-                        android:textColor="@color/blue_primary"/>
+                    <ImageButton
+                        android:id="@+id/btn_age_minus"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_revert"
+                        android:background="@drawable/bg_category_default"
+                        android:scaleType="center"
+                        android:contentDescription="−"
+                        app:tint="@color/vitality_primary"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"/>
 
-                    <Button
-                        android:id="@+id/btn_height_plus"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:text="+"
-                        android:textSize="20sp"
-                        android:padding="0dp"
-                        android:layout_marginStart="8dp"
-                        android:backgroundTint="@color/blue_primary"
-                        android:textColor="@color/white"/>
+                    <View
+                        android:layout_width="16dp"
+                        android:layout_height="0dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_age_plus"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_input_add"
+                        android:background="@drawable/bg_category_default"
+                        android:scaleType="center"
+                        android:contentDescription="+"
+                        app:tint="@color/vitality_primary"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Age section -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_age"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="12dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginHorizontal="16dp">
-
-            <Button
-                android:id="@+id/btn_age_minus"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:text="−"
-                android:textSize="22sp"
-                android:padding="0dp"
-                android:backgroundTint="@color/blue_light"
-                android:textColor="@color/blue_primary"/>
-
-            <TextView
-                android:id="@+id/tv_age_value"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="25"
-                android:textSize="44sp"
-                android:textStyle="bold"
-                android:textColor="@color/blue_primary"
-                android:gravity="center"
-                android:layout_marginHorizontal="16dp"/>
-
-            <Button
-                android:id="@+id/btn_age_plus"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:text="+"
-                android:textSize="22sp"
-                android:padding="0dp"
-                android:backgroundTint="@color/blue_primary"
-                android:textColor="@color/white"/>
-        </LinearLayout>
-
-        <!-- Calculate button -->
-        <Button
-            android:id="@+id/btn_calculate"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="28dp"
-            android:text="@string/btn_calculate"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/blue_primary"
-            android:stateListAnimator="@null"/>
-
-        <!-- Result section -->
+        <!-- Result Section -->
         <LinearLayout
             android:id="@+id/result_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/bg_info_card"
-            android:padding="24dp"
+            android:padding="32dp"
+            android:background="@drawable/bg_result_card"
+            android:layout_marginBottom="24dp"
             android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/your_bmi"
+                android:text="Сіздің нәтижеңіз"
                 android:textSize="14sp"
-                android:textColor="@color/text_secondary"/>
+                android:textColor="@color/vitality_secondary"/>
 
             <TextView
                 android:id="@+id/tv_bmi_result"
@@ -369,18 +328,43 @@
                 android:layout_height="wrap_content"
                 android:textSize="56sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/vitality_primary"
                 android:layout_marginTop="4dp"/>
 
             <TextView
                 android:id="@+id/tv_bmi_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
+                android:layout_marginTop="12dp"/>
 
+            <TextView
+                android:id="@+id/tv_view_workout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Жаттығу жоспарын көру →"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/vitality_primary"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"/>
         </LinearLayout>
+
+        <!-- Calculate Button -->
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_primary_gradient"
+            android:text="ЕСЕПТЕУ"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:stateListAnimator="@null"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 </ScrollView>

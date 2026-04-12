@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
@@ -24,13 +23,14 @@ import java.util.Map;
 public class BmiFragment extends Fragment {
 
     private boolean isMale = true;
-    private int weight = 70;
-    private int height = 170;
-    private int age = 25;
+    private int weight = 74;
+    private int height = 180;
+    private int age = 24;
 
     private TextView tvWeightValue, tvHeightValue, tvAgeValue;
     private ImageView imgMale, imgFemale;
     private TextView tvMaleLabel, tvFemaleLabel;
+    private View layoutMale, layoutFemale;
     private TextView tvBmiResult, tvBmiCategory;
     private View resultSection;
 
@@ -45,15 +45,17 @@ public class BmiFragment extends Fragment {
         imgFemale     = view.findViewById(R.id.img_female);
         tvMaleLabel   = view.findViewById(R.id.tv_male_label);
         tvFemaleLabel = view.findViewById(R.id.tv_female_label);
+        layoutMale    = view.findViewById(R.id.layout_male);
+        layoutFemale  = view.findViewById(R.id.layout_female);
         tvBmiResult   = view.findViewById(R.id.tv_bmi_result);
         tvBmiCategory = view.findViewById(R.id.tv_bmi_category);
         resultSection = view.findViewById(R.id.result_section);
 
-        view.findViewById(R.id.layout_male).setOnClickListener(v -> {
+        layoutMale.setOnClickListener(v -> {
             isMale = true;
             updateGenderUI();
         });
-        view.findViewById(R.id.layout_female).setOnClickListener(v -> {
+        layoutFemale.setOnClickListener(v -> {
             isMale = false;
             updateGenderUI();
         });
@@ -79,8 +81,15 @@ public class BmiFragment extends Fragment {
             if (age < 120) { age++; tvAgeValue.setText(String.valueOf(age)); }
         });
 
-        Button btnCalculate = view.findViewById(R.id.btn_calculate);
-        btnCalculate.setOnClickListener(v -> calculateBmi());
+        view.findViewById(R.id.btn_calculate).setOnClickListener(v -> calculateBmi());
+
+        TextView tvViewWorkout = view.findViewById(R.id.tv_view_workout);
+        tvViewWorkout.setOnClickListener(v -> {
+            String category = tvBmiCategory.getText().toString();
+            Intent intent = new Intent(getActivity(), WorkoutActivity.class);
+            intent.putExtra("bmi_category", category);
+            startActivity(intent);
+        });
 
         updateGenderUI();
         return view;
@@ -96,6 +105,7 @@ public class BmiFragment extends Fragment {
         tvBmiResult.setText(bmiStr);
         tvBmiCategory.setText(category);
         tvBmiCategory.setTextColor(color);
+        tvBmiCategory.setBackgroundResource(R.drawable.bg_category_default);
         resultSection.setVisibility(View.VISIBLE);
 
         saveBmiToFirebase(bmi, category, bmiStr);
@@ -156,22 +166,25 @@ public class BmiFragment extends Fragment {
 
     private void updateGenderUI() {
         if (getContext() == null) return;
+        int primaryColor = ContextCompat.getColor(requireContext(), R.color.vitality_primary);
+        int mutedColor = ContextCompat.getColor(requireContext(), R.color.vitality_on_surface_variant);
+
         if (isMale) {
-            imgMale.setBackgroundResource(R.drawable.bg_gender_selected);
-            imgMale.setColorFilter(ContextCompat.getColor(requireContext(), R.color.blue_primary));
-            tvMaleLabel.setTextColor(ContextCompat.getColor(requireContext(), R.color.blue_primary));
+            layoutMale.setBackgroundResource(R.drawable.bg_gender_selected);
+            imgMale.setColorFilter(primaryColor);
+            tvMaleLabel.setTextColor(primaryColor);
 
-            imgFemale.setBackgroundResource(R.drawable.bg_gender_default);
-            imgFemale.setColorFilter(ContextCompat.getColor(requireContext(), R.color.text_secondary));
-            tvFemaleLabel.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary));
+            layoutFemale.setBackgroundResource(R.drawable.bg_gender_default);
+            imgFemale.setColorFilter(mutedColor);
+            tvFemaleLabel.setTextColor(mutedColor);
         } else {
-            imgFemale.setBackgroundResource(R.drawable.bg_gender_selected);
-            imgFemale.setColorFilter(ContextCompat.getColor(requireContext(), R.color.blue_primary));
-            tvFemaleLabel.setTextColor(ContextCompat.getColor(requireContext(), R.color.blue_primary));
+            layoutFemale.setBackgroundResource(R.drawable.bg_gender_selected);
+            imgFemale.setColorFilter(primaryColor);
+            tvFemaleLabel.setTextColor(primaryColor);
 
-            imgMale.setBackgroundResource(R.drawable.bg_gender_default);
-            imgMale.setColorFilter(ContextCompat.getColor(requireContext(), R.color.text_secondary));
-            tvMaleLabel.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary));
+            layoutMale.setBackgroundResource(R.drawable.bg_gender_default);
+            imgMale.setColorFilter(mutedColor);
+            tvMaleLabel.setTextColor(mutedColor);
         }
     }
 }

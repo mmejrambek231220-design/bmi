@@ -4,52 +4,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="6dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/card_bg">
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/vitality_surface_container_lowest"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tv_workout_day"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="@color/green_primary"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_workout_day"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/vitality_primary"/>
+
+            <TextView
+                android:id="@+id/tv_workout_tip_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Кеңес"
+                android:textSize="11sp"
+                android:textColor="@color/vitality_on_primary"
+                android:background="@drawable/bg_category_active"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:visibility="gone"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_workout_exercises"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:textColor="@color/text_primary"
-            android:layout_marginTop="6dp"/>
+            android:textColor="@color/vitality_on_surface"
+            android:lineSpacingExtra="2dp"/>
 
         <TextView
             android:id="@+id/tv_workout_reps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"
-            android:textColor="@color/text_secondary"
-            android:layout_marginTop="4dp"/>
-
-        <TextView
-            android:id="@+id/tv_workout_tip_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/workout_tip_label"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:textColor="@color/blue_primary"
-            android:visibility="gone"
-            android:layout_marginTop="4dp"/>
+            android:textColor="@color/vitality_secondary"
+            android:layout_marginTop="6dp"/>
 
     </LinearLayout>
-
 </com.google.android.material.card.MaterialCardView>

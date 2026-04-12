@@ -130,4 +130,27 @@
     <string name="loading">Жүктелуде…</string>
     <string name="bmi_history_title">BMI тарихы</string>
     <string name="chart_title">BMI Өзгерісі</string>
+
+    <!-- Vitality Design System -->
+    <string name="vitality_brand">Vitality</string>
+    <string name="bmi_calculator_title">BMI Калькуляторы</string>
+    <string name="bmi_subtitle">Дене салмағының индексін есептеңіз</string>
+    <string name="your_result">Сіздің нәтижеңіз</string>
+    <string name="view_workout_plan">Жаттығу жоспарын көру</string>
+    <string name="calculate_btn">ЕСЕПТЕУ</string>
+    <string name="diet_search_placeholder">Тағамды іздеу...</string>
+    <string name="hot_meals">Ыстық тағамдар 🔥</string>
+    <string name="see_all">Барлығын көру</string>
+    <string name="current_metric">Қазіргі көрсеткіш</string>
+    <string name="progress_dynamics">Прогресс динамикасы</string>
+    <string name="measurement_history">Өлшемдер тарихы</string>
+    <string name="see_all_history">Барлық тарихты көру</string>
+    <string name="workout_plan_title">Жаттығу жоспары</string>
+    <string name="no_bmi_data">Алдымен BMI есептеңіз</string>
+    <string name="macro_carbs">Көмірсу</string>
+    <string name="macro_protein">Ақуыз</string>
+    <string name="macro_fat">Майлар</string>
+    <string name="serving_label">Порция</string>
+    <string name="ingredients_label">Құрамы</string>
+    <string name="steps_label">Дайындау тәсілі</string>
 </resources>

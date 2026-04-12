@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_diet_gradient"
+    android:background="@color/vitality_background"
     android:fillViewport="true"
     android:overScrollMode="never">
 
@@ -13,44 +13,30 @@
         android:orientation="vertical"
         android:paddingBottom="32dp">
 
-        <!-- Title -->
-        <TextView
-            android:id="@+id/tv_diet_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/diet_home_title"
-            android:textColor="@color/text_primary"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:lineSpacingExtra="4dp"/>
-
-        <!-- Search bar + Filter button row -->
+        <!-- Search bar + Filter button -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="56dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="52dp"
+                android:layout_height="48dp"
                 android:background="@drawable/bg_search_bar"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:paddingStart="14dp"
-                android:paddingEnd="8dp"
-                android:elevation="2dp">
+                android:paddingEnd="8dp">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@android:drawable/ic_menu_search"
-                    android:alpha="0.45"/>
+                    android:alpha="0.5"/>
 
                 <EditText
                     android:id="@+id/et_search"
@@ -58,8 +44,9 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
-                    android:hint="@string/diet_search_hint"
-                    android:textColorHint="@color/text_hint"
+                    android:hint="Тағамды іздеу..."
+                    android:textColorHint="@color/vitality_outline_variant"
+                    android:textColor="@color/vitality_on_surface"
                     android:textSize="15sp"
                     android:paddingStart="10dp"
                     android:singleLine="true"
@@ -69,26 +56,25 @@
 
             <ImageButton
                 android:id="@+id/btn_filter"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/bg_filter_btn"
                 android:src="@drawable/ic_filter"
+                android:tint="@color/white"
                 android:padding="14dp"
-                android:contentDescription="Filter"
-                android:elevation="2dp"/>
+                android:contentDescription="Filter"/>
         </LinearLayout>
 
-        <!-- Category chips — hidden by default, revealed by filter button -->
+        <!-- Category chips (always visible) -->
         <HorizontalScrollView
             android:id="@+id/hsv_categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:scrollbars="none"
-            android:visibility="gone">
+            android:scrollbars="none">
 
             <LinearLayout
                 android:id="@+id/ll_categories"
@@ -97,190 +83,308 @@
                 android:orientation="horizontal"/>
         </HorizontalScrollView>
 
-        <!-- What's Hot -->
-        <TextView
-            android:id="@+id/tv_hot_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="22dp"
-            android:text="@string/diet_hot_title"
-            android:textColor="@color/text_primary"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_hot"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingStart="16dp"
-            android:paddingEnd="8dp"/>
-
-        <!-- Breakfast section -->
+        <!-- Ыстық тағамдар section -->
         <LinearLayout
-            android:id="@+id/section_breakfast"
+            android:id="@+id/section_hot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:text="@string/meal_breakfast"
-                android:textColor="@color/text_primary"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ыстық тағамдар 🔥"
+                    android:textColor="@color/vitality_on_surface"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Барлығын көру"
+                    android:textColor="@color/vitality_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_breakfast"
+                android:id="@+id/rv_hot"
                 android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="192dp"
                 android:clipToPadding="false"
                 android:overScrollMode="never"
                 android:paddingStart="16dp"
                 android:paddingEnd="8dp"/>
         </LinearLayout>
 
-        <!-- Lunch section -->
-        <LinearLayout
-            android:id="@+id/section_lunch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:text="@string/meal_lunch"
-                android:textColor="@color/text_primary"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_lunch"
-                android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:overScrollMode="never"
-                android:paddingStart="16dp"
-                android:paddingEnd="8dp"/>
-        </LinearLayout>
-
-        <!-- Dinner section -->
-        <LinearLayout
-            android:id="@+id/section_dinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:text="@string/meal_dinner"
-                android:textColor="@color/text_primary"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_dinner"
-                android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:overScrollMode="never"
-                android:paddingStart="16dp"
-                android:paddingEnd="8dp"/>
-        </LinearLayout>
-
-        <!-- Weight Gain section -->
-        <LinearLayout
-            android:id="@+id/section_weight_gain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:text="@string/diet_tab_weight_gain"
-                android:textColor="@color/text_primary"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_weight_gain"
-                android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:overScrollMode="never"
-                android:paddingStart="16dp"
-                android:paddingEnd="8dp"/>
-        </LinearLayout>
-
-        <!-- Lose Weight section -->
+        <!-- Арықтау section -->
         <LinearLayout
             android:id="@+id/section_lose_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:text="@string/diet_tab_lose_weight"
-                android:textColor="@color/text_primary"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Арықтау"
+                    android:textColor="@color/vitality_on_surface"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Барлығы"
+                    android:textColor="@color/vitality_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_lose_weight"
                 android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="220dp"
                 android:clipToPadding="false"
                 android:overScrollMode="never"
                 android:paddingStart="16dp"
                 android:paddingEnd="8dp"/>
         </LinearLayout>
 
-        <!-- Salads section -->
+        <!-- Таңғы ас section -->
+        <LinearLayout
+            android:id="@+id/section_breakfast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Таңғы ас"
+                    android:textColor="@color/vitality_on_surface"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Барлығы"
+                    android:textColor="@color/vitality_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_breakfast"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"/>
+        </LinearLayout>
+
+        <!-- Түскі ас section -->
+        <LinearLayout
+            android:id="@+id/section_lunch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Түскі ас"
+                    android:textColor="@color/vitality_on_surface"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Барлығы"
+                    android:textColor="@color/vitality_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_lunch"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"/>
+        </LinearLayout>
+
+        <!-- Кешкі ас section -->
+        <LinearLayout
+            android:id="@+id/section_dinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Кешкі ас"
+                    android:textColor="@color/vitality_on_surface"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Барлығы"
+                    android:textColor="@color/vitality_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_dinner"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"/>
+        </LinearLayout>
+
+        <!-- Салмақ жинау section -->
+        <LinearLayout
+            android:id="@+id/section_weight_gain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Салмақ жинау"
+                    android:textColor="@color/vitality_on_surface"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Барлығы"
+                    android:textColor="@color/vitality_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_weight_gain"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"/>
+        </LinearLayout>
+
+        <!-- Салаттар section -->
         <LinearLayout
             android:id="@+id/section_salads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:text="@string/diet_tab_salads"
-                android:textColor="@color/text_primary"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Салаттар"
+                    android:textColor="@color/vitality_on_surface"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Барлығы"
+                    android:textColor="@color/vitality_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_salads"
                 android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="220dp"
                 android:clipToPadding="false"
                 android:overScrollMode="never"
                 android:paddingStart="16dp"
