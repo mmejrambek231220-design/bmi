@@ -2,6 +2,7 @@ package com.example.bmi;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -101,14 +103,13 @@ public class BmiFragment extends Fragment {
         String bmiStr = String.format(Locale.US, "%.1f", bmi);
         String category = getCategory(bmi);
         int color = getCategoryColor(bmi);
-
         tvBmiResult.setText(bmiStr);
         tvBmiCategory.setText(category);
         tvBmiCategory.setTextColor(color);
         tvBmiCategory.setBackgroundResource(R.drawable.bg_category_default);
         resultSection.setVisibility(View.VISIBLE);
 
-        saveBmiToFirebase(bmi, category, bmiStr);
+        saveBmiToFirebase(bmi, category);
         showWorkoutDialog(category);
     }
 
@@ -134,7 +135,7 @@ public class BmiFragment extends Fragment {
         else                   return Color.parseColor("#880E4F");
     }
 
-    private void saveBmiToFirebase(float bmi, String category, String bmiStr) {
+    private void saveBmiToFirebase(float bmi, String category) {
         if (getContext() == null) return;
         SharedPreferences prefs = requireContext().getSharedPreferences("BMI_PREFS", android.content.Context.MODE_PRIVATE);
         String uid = prefs.getString("user_uid", null);
@@ -171,19 +172,19 @@ public class BmiFragment extends Fragment {
 
         if (isMale) {
             layoutMale.setBackgroundResource(R.drawable.bg_gender_selected);
-            imgMale.setColorFilter(primaryColor);
+            ImageViewCompat.setImageTintList(imgMale, ColorStateList.valueOf(primaryColor));
             tvMaleLabel.setTextColor(primaryColor);
 
             layoutFemale.setBackgroundResource(R.drawable.bg_gender_default);
-            imgFemale.setColorFilter(mutedColor);
+            ImageViewCompat.setImageTintList(imgFemale, ColorStateList.valueOf(mutedColor));
             tvFemaleLabel.setTextColor(mutedColor);
         } else {
             layoutFemale.setBackgroundResource(R.drawable.bg_gender_selected);
-            imgFemale.setColorFilter(primaryColor);
+            ImageViewCompat.setImageTintList(imgFemale, ColorStateList.valueOf(primaryColor));
             tvFemaleLabel.setTextColor(primaryColor);
 
             layoutMale.setBackgroundResource(R.drawable.bg_gender_default);
-            imgMale.setColorFilter(mutedColor);
+            ImageViewCompat.setImageTintList(imgMale, ColorStateList.valueOf(mutedColor));
             tvMaleLabel.setTextColor(mutedColor);
         }
     }
